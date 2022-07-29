@@ -1,0 +1,23 @@
+---
+  - hosts: default
+    become: true
+
+    tasks:
+      - name: update the apt-get
+        apt:
+          update_cache: yes
+      
+      - name: Install apache2
+        apt:
+          name: "apache2"
+          state: present
+
+      - name: Install nginx
+        apt:
+          name: "nginx"
+          state: present
+
+      - name: Restart apache2 server
+        service:
+          name: apache2
+          state: restarted
